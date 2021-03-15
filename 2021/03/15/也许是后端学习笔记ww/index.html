@@ -148,7 +148,7 @@
 <li>使用hexo搭建，采用nodejs框架</li>
 <li>发布文章的指令流程：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;name&quot;</span></span><br><span class="line"><span class="comment"># 进入 ./blog/sorce/-posts/xxx.md 进行markdown语句书写并且保存</span></span><br><span class="line">hexo g <span class="comment"># hexo generate 生成静态页面</span></span><br><span class="line">hexo d <span class="comment"># hexo deploy 进行部署</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new <span class="hljs-string">&quot;name&quot;</span><br><span class="hljs-comment"># 进入 ./blog/sorce/-posts/xxx.md 进行markdown语句书写并且保存</span><br>hexo g <span class="hljs-comment"># hexo generate 生成静态页面</span><br>hexo d <span class="hljs-comment"># hexo deploy 进行部署</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="LINUX-UNIX"><a href="#LINUX-UNIX" class="headerlink" title="LINUX/UNIX"></a>LINUX/UNIX</h1><ul>
 <li>sudo：Linux sudo命令以系统管理者的身份执行指令，也就是说，经由 sudo 所执行的指令就好像是 root 亲自执行。（有些命令报错加个sudo就行了）</li>
@@ -160,37 +160,37 @@
 <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
 <li>MySQL连接</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql -u root -p<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>MySQL创建数据库</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database db_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> database db_name;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>MySQL删除数据库</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database db_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">drop</span> database db_name;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>MySQL选择数据库</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use db_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">use db_name;<br></code></pre></td></tr></table></figure>
 
 <h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3><ul>
 <li>MySQL创建数据表</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> `runoob_tbl`(</span><br><span class="line">   `runoob_id` <span class="type">INT</span> UNSIGNED AUTO_INCREMENT,</span><br><span class="line">   `runoob_title` <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">   `runoob_author` <span class="type">VARCHAR</span>(<span class="number">40</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">   `submission_date` <span class="type">DATE</span>,</span><br><span class="line">   <span class="keyword">PRIMARY</span> KEY ( `runoob_id` )</span><br><span class="line">)ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> `runoob_tbl`(<br>   `runoob_id` <span class="hljs-type">INT</span> UNSIGNED AUTO_INCREMENT,<br>   `runoob_title` <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>   `runoob_author` <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">40</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>   `submission_date` <span class="hljs-type">DATE</span>,<br>   <span class="hljs-keyword">PRIMARY</span> KEY ( `runoob_id` )<br>)ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>MySQL删除数据表</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> table_name ;<br></code></pre></td></tr></table></figure>
 
 <h3 id="数据CRUD"><a href="#数据CRUD" class="headerlink" title="数据CRUD"></a>数据CRUD</h3><ul>
 <li>MySQL插入数据</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name ( field1, field2,...fieldN )</span><br><span class="line">                       <span class="keyword">VALUES</span></span><br><span class="line">                       ( value1, value2,...valueN );</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> table_name ( field1, field2,...fieldN )<br>                       <span class="hljs-keyword">VALUES</span><br>                       ( value1, value2,...valueN );<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>善于使用通配符 *！！！</p>
@@ -198,12 +198,12 @@
 <ul>
 <li>MySQL查询数据</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name,column_name</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line">[<span class="keyword">WHERE</span> Clause]</span><br><span class="line">[LIMIT N][ <span class="keyword">OFFSET</span> M]</span><br><span class="line"></span><br><span class="line"># 实例</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> hibana;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> column_name,column_name<br><span class="hljs-keyword">FROM</span> table_name<br>[<span class="hljs-keyword">WHERE</span> Clause]<br>[LIMIT N][ <span class="hljs-keyword">OFFSET</span> M]<br><br># 实例<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> hibana;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>更多语句</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">where</span> 子句</span><br><span class="line"></span><br><span class="line">update 语句</span><br><span class="line">mysql<span class="operator">&gt;</span> update hibana <span class="keyword">set</span> name<span class="operator">=</span><span class="string">&#x27;w&#x27;</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;www&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> 语句</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">delete</span> <span class="keyword">from</span> hibana <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">like</span> 子句</span><br><span class="line"># <span class="operator">%</span>类似通配符 可以进行模糊查找</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> hibana <span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;%a%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">union</span> 语句</span><br><span class="line"># MySQL <span class="keyword">UNION</span> 操作符用于连接两个以上的 <span class="keyword">SELECT</span> 语句的结果组合到一个结果集合中。多个 <span class="keyword">SELECT</span> 语句会删除重复的数据。</span><br><span class="line"></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 排序</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> hibana <span class="keyword">order</span> <span class="keyword">by</span> submission_date <span class="keyword">asc</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">where</span> 子句<br><br>update 语句<br>mysql<span class="hljs-operator">&gt;</span> update hibana <span class="hljs-keyword">set</span> name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;w&#x27;</span> <span class="hljs-keyword">where</span> name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;www&#x27;</span>;<br><br><span class="hljs-keyword">delete</span> 语句<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> hibana <span class="hljs-keyword">where</span> id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br><br><span class="hljs-keyword">like</span> 子句<br># <span class="hljs-operator">%</span>类似通配符 可以进行模糊查找<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> hibana <span class="hljs-keyword">where</span> name <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;%a%&#x27;</span>;<br><br><span class="hljs-keyword">union</span> 语句<br># MySQL <span class="hljs-keyword">UNION</span> 操作符用于连接两个以上的 <span class="hljs-keyword">SELECT</span> 语句的结果组合到一个结果集合中。多个 <span class="hljs-keyword">SELECT</span> 语句会删除重复的数据。<br><br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> 排序<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> hibana <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> submission_date <span class="hljs-keyword">asc</span>;<br><br></code></pre></td></tr></table></figure>
 
 <p><img src="%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%208290dfe7473e4d288a9712921ee9b43c/Untitled.png" alt="%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%208290dfe7473e4d288a9712921ee9b43c/Untitled.png"></p>
 
@@ -256,6 +256,17 @@
     <!-- footer container -->
 <footer id="footer" class="footer">
   <div class="footer-container">
+    
+    <div class="social-icons social-icons-footer">
+      <a href="mailto:v3nividiv1ci@outlook.com" target="_blank" rel="noopener noreferrer">
+  <svg class="icon icon-email" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M490.338462 592.738462c11.815385 11.815385 29.538462 11.815385 41.353846 0l445.046154-413.538462c7.876923-15.753846 5.907692-41.353846-25.6-41.353846l-880.246154 1.969231c-23.630769 0-43.323077 21.661538-25.6 41.353846l445.046154 411.569231zM984.615385 340.676923c0-19.692308-23.630769-31.507692-39.384616-17.723077L596.676923 643.938462c-23.630769 21.661538-53.169231 33.476923-84.676923 33.476923s-61.046154-11.815385-84.676923-31.507693L80.738462 322.953846c-15.753846-13.784615-39.384615-3.938462-39.384616 17.723077C39.384615 334.769231 39.384615 787.692308 39.384615 787.692308c0 43.323077 35.446154 78.769231 78.769231 78.76923h787.692308c43.323077 0 78.769231-35.446154 78.769231-78.76923V340.676923z"></path>
+  </svg>
+</a><a href="rifiuti generici" target="_blank" rel="noopener noreferrer">
+  <svg t="1587373160860" class="icon icon-zhihu" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M544.949 561.422s0-71.387-34.779-75.050c-34.779-3.663-142.775 0-142.775 0v-219.654h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078 0c-27.457 1.83-42.101 75.050-42.101 75.050h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.050 188.010l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912v-660.793h-366.091zM879.92 775.584h-76.879l-97.013 75.050-21.965-75.050h-20.134v-512.527h215.991v512.527z"></path>
+  </svg>
+</a>    </div>
      
     <p>&copy; 2021 <a href="/" target="_blank">hibana</a></p>
 
