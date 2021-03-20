@@ -22,7 +22,7 @@
 
   
 
-  <title>搭建简易后端服务的笔记w | ヒバナ</title>
+  <title>1037-Whisper 实习日志 | ヒバナ</title>
 
   
 
@@ -95,13 +95,13 @@
         <div class="type-wrap">
           <a class="article-category-link" href="/categories/coding/">coding</a>
         </div>
-        <h1 class="title-wrap">搭建简易后端服务的笔记w</h1>
+        <h1 class="title-wrap">1037-Whisper 实习日志</h1>
         <h2 class="title-sub-wrap">
           <strong>hibana</strong>
           <span>发布于</span>
           
   <a href="javascript:;" class="article-date">
-    <time datetime="2021-03-17T03:46:55.000Z" itemprop="datePublished">2021-03-17</time>
+    <time datetime="2021-03-20T16:57:17.000Z" itemprop="datePublished">2021-03-21</time>
   </a>
 
         </h2>
@@ -125,68 +125,53 @@
       
 
       <section class="article-entry">
-        <h1 id="搭建简易后端服务"><a href="#搭建简易后端服务" class="headerlink" title="搭建简易后端服务"></a>搭建简易后端服务</h1><p>2.12</p>
-<p>GET/POST请求</p>
+        <h1 id="1037-Whisper-实习日志"><a href="#1037-Whisper-实习日志" class="headerlink" title="1037-Whisper 实习日志"></a>1037-Whisper 实习日志</h1><p>前面的一点碎碎念：</p>
+<p>选这个题其实蛮有私心的，<del>因为高中dokidoki了两年的人是做匿名社交的（bushi</del></p>
+<p>如果放到两年前，我可能觉得这也是接近他的一种方式吧…</p>
+<p>好了下面开始正题ww</p>
+<hr>
 <ul>
-<li><input disabled="" type="checkbox"> 怎么写api的endpoint</li>
-<li><input disabled="" type="checkbox"> 使用postman发送GET/POST请求</li>
+<li>0320</li>
 </ul>
-<p>读取GET/POST前端发送给后端的信息</p>
+<p><strong>时间分配</strong>：</p>
+<p>上午<del>参观微派</del>打了一上午贪吃蛇✅，晚上说是大创开会但为什么一直在听搞热能车的同学讲一些我不明觉厉的东西…总之大概捋思路和敲代码的时间就只有下午和深夜qwq</p>
+<p><strong>进度</strong>：</p>
 <ul>
-<li><input disabled="" type="checkbox"> 大致了解JSON格式：”key”:”value”</li>
-<li><input disabled="" type="checkbox"> http知识：form</li>
-<li><input disabled="" type="checkbox"> body中JSON/raw/form格式</li>
+<li><p>捋了一下阶段一二三四的大致思路</p>
+</li>
+<li><p>阶段一分成两次交互，做了第一次交互</p>
+<p>  验证邮箱是否合法</p>
+<p>  用pop3服务发邮件</p>
+<p>  生成验证码</p>
+</li>
+<li><p>交互一没有来得及做完的地方：用redis存储</p>
+</li>
 </ul>
-<p>2.13</p>
-<p>数据库实例的创建</p>
+<p><strong>学习内容</strong>：</p>
+<ol>
+<li><del>@app.route(“/“)是什么意思（还是不是很懂）</del></li>
+</ol>
+<p>大概route是一个装饰器，然后把参数传到外面的工厂函数</p>
+<ol start="2">
+<li><p>调库（email&lt;负责构造邮件格式和内容&gt;/ smtplib&lt;负责发送邮件&gt;）+ 使用POP3/SMTP服务自动发邮件</p>
+</li>
+<li><p>一些python的奇怪函数（由于基本是用啥学啥之前都没见过,,,）</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 字符串以xx开头/结尾</span><br><span class="hljs-built_in">str</span>.startswith(&lt;<span class="hljs-built_in">tuple</span>&gt;)<br><span class="hljs-built_in">str</span>.endswith(&lt;<span class="hljs-built_in">tuple</span>&gt;)<br><span class="hljs-comment"># 判断数值在范围内（一定是数值啊喂！我把字符串放里面然后愣是debug半小时才发现这个问题，，爬了</span><br>num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m, n)<br></code></pre></td></tr></table></figure>
+
+<p><strong>当前存在的问题</strong>：</p>
 <ul>
-<li><input disabled="" type="checkbox"> z</li>
+<li><input disabled="" type="checkbox"> 发送邮件成功但不return我设定的语句却500了，，可能是端口被占了的问题（？不懂，明天再看看</li>
 </ul>
-<p>利用工厂模式创建flask实例</p>
+<p><strong>明天大概计划</strong>：</p>
 <ul>
-<li><input disabled="" type="checkbox"> 工厂模式：常见的用于创建对象的数据模式</li>
-<li><input disabled="" type="checkbox"> 注册实例</li>
-<li><input disabled="" type="checkbox"> export（FLASK_APP/FLASK_ENV) 生效周期：一个terminal</li>
+<li><input disabled="" type="checkbox"> 做完交互一的redis存储</li>
+<li><input disabled="" type="checkbox"> 做完交互二</li>
+<li><input disabled="" type="checkbox"> 完成阶段二</li>
 </ul>
-<p>2.14情人节快乐！</p>
-<p>crud四个操作的sqlite用法</p>
-<ul>
-<li><input disabled="" type="checkbox"> R: Read \GET</li>
-<li><input disabled="" type="checkbox"> C: Create \POST</li>
-<li><input disabled="" type="checkbox"> U: Update \PUT</li>
-<li><input disabled="" type="checkbox"> D: Delete \DELETE</li>
-</ul>
-<p>tableplus数据库管理的使用</p>
-<p>2.15</p>
-<ul>
-<li><input disabled="" type="checkbox"> happy path: 理想情况</li>
-</ul>
-<p>2.16</p>
-<p>minimal viable stack 最小可行技术栈</p>
-<ul>
-<li><input disabled="" type="checkbox"> restful: api实践</li>
-</ul>
-<p>2.17</p>
-<p>crud</p>
-<p>read</p>
-<ul>
-<li><input disabled="" type="checkbox"> 1.建立数据库连接</li>
-<li><input disabled="" type="checkbox"> 2.获取数据库游标</li>
-<li><input disabled="" type="checkbox"> 3.写sql</li>
-<li><input disabled="" type="checkbox"> 4.执行sql</li>
-<li><input disabled="" type="checkbox"> 5.处理数据库数据</li>
-<li><input disabled="" type="checkbox"> 6.返回数据给调用者</li>
-</ul>
-<p>2.19</p>
-<p>crud</p>
-<p>create/delete</p>
-<ul>
-<li><input disabled="" type="checkbox"> 1.建立数据库连接：connection</li>
-<li><input disabled="" type="checkbox"> 2.query语句</li>
-<li><input disabled="" type="checkbox"> 3.DML：execute, commit</li>
-</ul>
-<p>2.22</p>
-<p>crud总算都写完啦！下一步，爬虫！</p>
+<p>晚安😴</p>
+<hr>
 
       </section>
 
@@ -199,28 +184,15 @@
 <nav class="card-container card-article-nav">
   <div class="card-list">
     
-      <div id="article-nav-newer" class="card-item">
-        <article>
-          
-          <a class="card-link article-nav-link" href="/2021/03/21/1037-Whisper-%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/"></a>
-          <strong class="article-nav-caption">Newer</strong>
-          <p class="article-nav-title">
-            
-              1037-Whisper 实习日志
-            
-          </p>
-        </article>
-      </div>
-    
     
       <div id="article-nav-older" class="card-item">
         <article>
           
-          <a class="card-link article-nav-link" href="/2021/03/15/%E5%A4%A7%E5%88%9B/"></a>
+          <a class="card-link article-nav-link" href="/2021/03/17/%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/"></a>
           <strong class="article-nav-caption">Older</strong>
           <p class="article-nav-title">
             
-              大创笔记
+              搭建简易后端服务的笔记w
             
           </p>
         </article>
