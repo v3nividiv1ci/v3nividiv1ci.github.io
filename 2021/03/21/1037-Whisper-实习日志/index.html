@@ -130,6 +130,11 @@
 <p>如果放到两年前，我可能觉得这也是接近他的一种方式吧…</p>
 <p>好了下面开始正题ww</p>
 <hr>
+<h1 id="1037-Whisper-实习日志-1"><a href="#1037-Whisper-实习日志-1" class="headerlink" title="1037-Whisper 实习日志"></a>1037-Whisper 实习日志</h1><p>前面的一点碎碎念：</p>
+<p>选这个题其实蛮有私心的，<del>因为高中dokidoki了两年的人是做匿名社交的（bushi</del></p>
+<p>如果放到两年前，我可能觉得这也是接近他的一种方式吧…</p>
+<p>好了下面开始正题ww</p>
+<hr>
 <ul>
 <li>0320</li>
 </ul>
@@ -171,6 +176,62 @@
 <li><input disabled="" type="checkbox"> 完成阶段二</li>
 </ul>
 <p>晚安😴</p>
+<hr>
+<ul>
+<li>0321</li>
+</ul>
+<p><strong>时间分配</strong>：</p>
+<p>上午打了疫苗回寮差不多就中午了qwq下午就一直宅在寮里，大概就是一天都在码(x)因为手臂越来越酸，合理摸鱼的世界，成了（</p>
+<p>晚上吃完泡面看完po主复刻美食教程的翻车视频之后因为数据库连接的问题心态炸了</p>
+<p><strong>进度</strong>：</p>
+<ul>
+<li><p>第一次交互</p>
+<p>  redis存验证码设置过期时间</p>
+</li>
+<li><p>第二次交互</p>
+<p>  jwt鉴权</p>
+<p>  以json格式发token</p>
+</li>
+<li><p>阶段二</p>
+<p>  理清大概数据表的结构：POST, P_COMMENT, C_COMMENT, EMAIL四个表分别用来存放帖子、回复、楼中楼的信息</p>
+<p>  本地创建了数据库和四个表</p>
+<p>  完成了对每次请求的鉴权</p>
+</li>
+</ul>
+<p><strong>学习内容</strong>：</p>
+<ol>
+<li>以json格式进行返回return dict( )</li>
+<li>学习写config</li>
+<li>用jwt鉴权</li>
+<li>很好，mysql连接炸了，我心态也炸了，搞了差不多一个半小时，发现用终端🔗数据库时添加</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">unix_socket=<span class="hljs-string">&quot;/tmp/mysql.sock&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>或者用tableplus连接时把host:127.0.0.1，就又可以了。</p>
+<p>PyMySQLcan’tconnecttoMySQLonlocalhost<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6885164/pymysql-cant-connect-to-mysql-on-localhost">https://stackoverflow.com/questions/6885164/pymysql-cant-connect-to-mysql-on-localhost</a></p>
+<p>大概就是用tcp崩了，只能用socket，这我就属实不懂了，，</p>
+<p><strong>当前存在的问题</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 写着写着容易写自闭了，很容易心态崩了&gt;_&lt;</li>
+<li><input disabled="" type="checkbox"> redis连接池，，看不懂</li>
+</ul>
+<p><strong>明天KP</strong>I（</p>
+<ul>
+<li><p><input disabled="" type="checkbox">  写完阶段二的crud</p>
+</li>
+<li><p><input disabled="" type="checkbox">  写完阶段二的关于分享链接的部分</p>
+<p>  目前思路是两个函数，一个生成链接即返回post的id，一个是含有postid的get请求不用鉴权</p>
+<p>  以及</p>
+<blockquote>
+<p>简单的逻辑为:访问帖子链接的人可以查看该帖的所有内容和回复，但是非登陆态用户无法显示树洞首<br>  页的帖子列表，以及其他后续功能。</p>
+</blockquote>
+</li>
+</ul>
+<p>这个是不是只要其他都做到鉴权就实现了</p>
+<ul>
+<li><input disabled="" type="checkbox"> 开始做阶段三（能不能直接区块链加密x</li>
+</ul>
+<p>好好睡觉😪</p>
 <hr>
 
       </section>
