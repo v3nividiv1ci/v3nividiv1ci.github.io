@@ -237,7 +237,7 @@
 <li>0322</li>
 </ul>
 <p><strong>时间分配</strong>：</p>
-<p>上午微积分电论，下午绝🌟赞🌟逃🌟课🌟中，一直到12点不是在debug就是在写bug，主要问题是使用库函数之前了解不够充分，总是对其返回值或者参数产生误解…😅对数据库的使用以及sql语句也非常不熟悉（不过今天总算熟悉了一点？</p>
+<p>上午微积分电论，下午绝🌟赞🌟逃🌟课🌟中，一直到12点 不是在debug就是在写bug，主要问题是使用库函数之前了解不够充分，总是对其返回值或者参数产生误解…😅对数据库的使用以及sql语句也非常不熟悉（不过今天总算熟悉了一点？</p>
 <p><strong>进度</strong>：</p>
 <ul>
 <li><p>实现了阶段二发帖的功能</p>
@@ -299,10 +299,78 @@
 </ul>
 <p><strong>明天计划</strong>：</p>
 <ul>
-<li><input disabled="" type="checkbox"> 阶段二</li>
+<li><input checked="" disabled="" type="checkbox"> 阶段二</li>
 <li><input disabled="" type="checkbox"> 阶段三</li>
 </ul>
 <p>明天想泛舟喻家湖🚣‍♀️🥱晚安😴</p>
+<hr>
+<ul>
+<li>0323</li>
+</ul>
+<p><strong>学习内容</strong>：</p>
+<ol>
+<li>数据库事务回滚：conn.rollback</li>
+</ol>
+<p>存在的问题：</p>
+<ul>
+<li><input disabled="" type="checkbox"> roll back之后可以不commit？但为什么又说commit和roll back成对使用（（</li>
+<li><input disabled="" type="checkbox"> 好像连接池里面的conn并没有回滚这个方法？（反正pycharm没给我自动补全💁🏻）</li>
+</ul>
+<hr>
+<ul>
+<li>0324</li>
+</ul>
+<p><strong>学习内容:</strong></p>
+<ol>
+<li>SSRF攻击及防御</li>
+<li>加密算法</li>
+</ol>
+<p>几个关键词的理解：</p>
+<ul>
+<li>AES-256（北大树洞）（轮函数，算法安全实现不一定安全（雾</li>
+<li>加盐：eg: md5(明文+salt)</li>
+<li>rsa：一种非对称加密，其实思想很简单：利用了单向函数正向求解很简单，反向求解很复杂的特性。</li>
+</ul>
+<p>具体是利用了：</p>
+<blockquote>
+<p>1.对两个质数相乘容易，而将其合数分解很难的这个特点进行的加密算法。 n=p1*p2，已知p1、p2求n简单，已知n求p1、p2困难。</p>
+</blockquote>
+<blockquote>
+<p>2.(m^e) mod n=c，已知m、e、n求c简单，已知e、n、c求m很难。</p>
+</blockquote>
+<p>本来想用md5，但md5不能解密诶，，看起来如果我要封禁还是需要非对称加密，所以就是非对称加密+散列+加盐？</p>
+<p><del>好我大概懂了，大致思路就是我要加两次密，一次可逆一次不可逆。</del></p>
+<p>第<del>一次是把用户邮箱通过散列（md5/sha）变成不可逆的密文（虽然用户量太小而且格式固定明显能在多项式时间内被枚举hash出来，，，）</del></p>
+<p><strong>我悟了，需求还是要能对得上人还能追责，所以应该是加一次密就行，就是加盐+可逆加密</strong></p>
+<p><strong>这个盐就是post_id就行，因为虽然不能让拿到数据库的人认出来同一个人发的不同帖子，但是需要认出来同一个人在同一条帖子底下发的comment（楼）和reply（楼中楼）</strong>，具体可以参见清华树洞的“洞主”，“Alice“，“Bob”等相关名称分发的机制</p>
+<p><strong>くそ～😿我想了一晚上的东西早都有人想出来了💁🏻‍♀️</strong></p>
+<blockquote>
+<p>更进一步的，可以考虑新用户email全部采用加盐+可逆加密，然后密钥和数据库分2个人保管</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/thuhole/thuhole-go-backend/issues/81">https://github.com/thuhole/thuhole-go-backend/issues/81</a></p>
+<p>大概还需要一个表存哈希过的封禁邮箱，小黑屋成了！（雾</p>
+<ol start="3">
+<li>具体的实现：</li>
+</ol>
+<p>一个字母是1 byte = 8 bits, 华科邮箱长度22byte；按一分钟更新一条算，</p>
+<p><strong>当前问题</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 为啥不让我用多进程加速😅会报错</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">(pubkey, privkey) = rsa.newkeys(<span class="hljs-number">512</span>, poolsize=<span class="hljs-number">8</span>)  <span class="hljs-comment"># 使用多进程加速生成</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>明天计划：</strong></p>
+<p>一次非对称加密（盐（post_id）+邮箱）</p>
+<p>删除目前的邮箱列表，建一个黑名单邮箱列表，里面存储哈希过的黑名单邮箱</p>
+<ul>
+<li><input disabled="" type="checkbox"> 追责：私钥解开之后是明文就行</li>
+<li><input disabled="" type="checkbox"> 封禁：进入邮箱小黑屋</li>
+<li><input disabled="" type="checkbox"> 删帖：</li>
+</ul>
+<blockquote>
+<p>删主楼会删掉所有跟帖和楼中楼<br>删跟帖会删掉所有楼中楼<br>删楼中楼只删自己</p>
+</blockquote>
+<p>via一个现在看起来有点不开心的学长😿</p>
 <hr>
 
       </section>
