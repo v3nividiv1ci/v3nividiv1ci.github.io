@@ -22,7 +22,7 @@
 
   
 
-  <title>Archives | ヒバナ</title>
+  <title>LINUX学习笔记 | ヒバナ</title>
 
   
 
@@ -70,7 +70,16 @@
 
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
+
+  
+  
+
+  
+  
+
+  
+  
 
   
   
@@ -83,19 +92,21 @@
       
 
       <div class="post-text">
-        <h1 class="title-wrap">归档</h1>
-        <h2 class="title-sub-wrap">共有9篇文章</h2>
+        <div class="type-wrap">
+          
+        </div>
+        <h1 class="title-wrap">LINUX学习笔记</h1>
+        <h2 class="title-sub-wrap">
+          <strong>hibana</strong>
+          <span>发布于</span>
+          
+  <a href="javascript:;" class="article-date">
+    <time datetime="2021-04-08T15:08:20.000Z" itemprop="datePublished">2021-04-08</time>
+  </a>
+
+        </h2>
       </div>
     </div>
-  
-
-  
-  
-
-  
-  
-
-  
   
 
   
@@ -103,183 +114,84 @@
   
 </header>
 
-    <!-- 归档 -->
+    <!-- 文章 -->
 
-<!-- post list container -->
-<div class="body-container float">
-  <div class="content-container article-list">
-    <div class="card-container card-articles">
-      <div class="card-list">
+<!-- 文章内容 -->
+
+<div class="body-container">
+  <article class="content-container article-container">
+    <div class="article-content">
+      
+      
+
+      <section class="article-entry">
+        <h1 id="LINUX学习笔记"><a href="#LINUX学习笔记" class="headerlink" title="LINUX学习笔记"></a>LINUX学习笔记</h1><ul>
+<li><p>0408</p>
+</li>
+<li><p>进程、线程：进程是资源分配的最小单位，线程是CPU调度的最小单位</p>
+</li>
+<li><p>查看、结束进程（process)</p>
+<p>  ps：（process status）用于显示当前进程的状态，类似于windows的进程管理器</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ps -u root //显示root进程用户信息<br>$ ps -ef | grep 进程关键字<br></code></pre></td></tr></table></figure>
+
+<p>  top：显示实时进程动态</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ top <br>$ top -p 16910<br><br>//显示进程号为139的进程信息，CPU、内存占用率等<br></code></pre></td></tr></table></figure>
+
+<p>  killall：Linux killall 用于杀死一个进程，与 kill 不同的是它会杀死指定名字的所有进程。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ killall [选项]  name<br></code></pre></td></tr></table></figure>
+
+<p>  pkill：类似于killall</p>
+</li>
+<li><p>查看系统中端口占用情况</p>
+<ul>
+<li><p>lsof (lsof -i只能root权限的用户使用)</p>
+<p>  list open files：查看当前系统打开文件</p>
+<p>  lsof 查看端口占用：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">lsof -i:端口号<br><span class="hljs-comment"># 需要root用户权限来执行</span><br></code></pre></td></tr></table></figure>
+
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">lsof -i:8080：查看8080端口占用<br>lsof abc.txt：显示开启文件abc.txt的进程<br>lsof -c abc：显示abc进程现在打开的文件<br>lsof -c -p 1234：列出进程号为1234的进程所打开的文件<br>lsof -g gid：显示归属gid的进程情况<br>lsof +d /usr/<span class="hljs-built_in">local</span>/：显示目录下被进程开启的文件<br>lsof +D /usr/<span class="hljs-built_in">local</span>/：同上，但是会搜索目录下的目录，时间较长<br>lsof -d 4：显示使用fd为4的进程<br>lsof -i -U：显示所有打开的端口和UNIX domain文件<br></code></pre></td></tr></table></figure></li>
+<li><p>netstat -tunlp</p>
+<p>  用于显示tcp，udp的端口和进程等相关情况</p>
+<p>  netstat 查看端口占用语法格式：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ netstat -tunlp | grep 端口号<br></code></pre></td></tr></table></figure>
+
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ netstat -ntlp   //查看当前所有tcp端口<br>$ netstat -ntulp | grep 80   //查看所有80端口使用情况<br>$ netstat -ntulp | grep 3306   //查看所有3306端口使用情况<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      </section>
+
+      <section class="article-footer">
         
+      </section>
+
+      <section class="article-navs">
+        
+<nav class="card-container card-article-nav">
+  <div class="card-list">
+    
+    
+      <div id="article-nav-older" class="card-item">
+        <article>
           
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/21/1037-Whisper-%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/" itemprop="url"></a>
-              
-              <h2 class="article-title">1037-Whisper 实习日志</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/21/1037-Whisper-%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/" class="article-date">
-    <time datetime="2021-03-20T16:57:17.000Z" itemprop="datePublished">2021-03-21</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/17/%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" itemprop="url"></a>
-              
-              <h2 class="article-title">搭建简易后端服务的笔记w</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/17/%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" class="article-date">
-    <time datetime="2021-03-17T03:46:55.000Z" itemprop="datePublished">2021-03-17</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E5%A4%A7%E5%88%9B/" itemprop="url"></a>
-              
-              <h2 class="article-title">大创笔记</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E5%A4%A7%E5%88%9B/" class="article-date">
-    <time datetime="2021-03-15T08:24:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/start-up/">start-up</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E7%82%B9%E7%9F%B3%E5%88%9B%E6%A0%A1/" itemprop="url"></a>
-              
-              <h2 class="article-title">点石创校笔记</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E7%82%B9%E7%9F%B3%E5%88%9B%E6%A0%A1/" class="article-date">
-    <time datetime="2021-03-15T08:20:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/start-up/">start-up</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E4%B8%80%E4%BA%9B%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0ww%20/" itemprop="url"></a>
-              
-              <h2 class="article-title">一些爬虫笔记ww</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E4%B8%80%E4%BA%9B%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0ww%20/" class="article-date">
-    <time datetime="2021-03-15T07:31:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E4%B9%9F%E8%AE%B8%E6%98%AF%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0ww/" itemprop="url"></a>
-              
-              <h2 class="article-title">也许是萌新的后端学习笔记（x</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E4%B9%9F%E8%AE%B8%E6%98%AF%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0ww/" class="article-date">
-    <time datetime="2021-03-15T01:48:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/13/hello-world/" itemprop="url"></a>
-              
-              <h2 class="article-title">Hello World</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/13/hello-world/" class="article-date">
-    <time datetime="2021-03-13T14:16:34.777Z" itemprop="datePublished">2021-03-13</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                
-              </div>
-            </article>
-          </div>
-        
+          <a class="card-link article-nav-link" href="/2021/04/08/BITS-BYTES-INTEGERS/"></a>
+          <strong class="article-nav-caption">Older</strong>
+          <p class="article-nav-title">
+            
+              BITS, BYTES &amp;&amp; INTEGERS
+            
+          </p>
+        </article>
       </div>
-    </div>
+    
   </div>
+</nav>
+
+      </section>
+    </div>
+  </article>
 </div>
-
-<!-- page container -->
-
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">
@@ -343,6 +255,23 @@
 
   
   
+<!-- valine 评论 start -->
+<script type="text/javascript" src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+  new Valine({
+    el: "#valine_thread",
+    appId: "hibana",
+    appKey: "Hibana_114514",
+    avatar: "mm",
+    placeholder: "随便说点什么叭～",
+    notify: true,
+    visitor: true,
+    pageSize: 10,
+  });
+</script>
+<!-- valine 评论 end -->
+
 
 
   <!-- aplayer 音频 start -->
