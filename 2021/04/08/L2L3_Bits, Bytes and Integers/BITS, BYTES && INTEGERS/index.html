@@ -22,7 +22,7 @@
 
   
 
-  <title>Archives | ヒバナ</title>
+  <title>BITS, BYTES &amp;&amp; INTEGERS | ヒバナ</title>
 
   
 
@@ -70,7 +70,16 @@
 
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
+
+  
+  
+
+  
+  
+
+  
+  
 
   
   
@@ -83,19 +92,21 @@
       
 
       <div class="post-text">
-        <h1 class="title-wrap">归档</h1>
-        <h2 class="title-sub-wrap">共有8篇文章</h2>
+        <div class="type-wrap">
+          <a class="article-category-link" href="/categories/coding/">coding</a>
+        </div>
+        <h1 class="title-wrap">BITS, BYTES &amp;&amp; INTEGERS</h1>
+        <h2 class="title-sub-wrap">
+          <strong>hibana</strong>
+          <span>发布于</span>
+          
+  <a href="javascript:;" class="article-date">
+    <time datetime="2021-04-08T14:53:55.000Z" itemprop="datePublished">2021-04-08</time>
+  </a>
+
+        </h2>
       </div>
     </div>
-  
-
-  
-  
-
-  
-  
-
-  
   
 
   
@@ -103,183 +114,158 @@
   
 </header>
 
-    <!-- 归档 -->
+    <!-- 文章 -->
 
-<!-- post list container -->
-<div class="body-container float">
-  <div class="content-container article-list">
-    <div class="card-container card-articles">
-      <div class="card-list">
+<!-- 文章内容 -->
+
+<div class="body-container">
+  <article class="content-container article-container">
+    <div class="article-content">
+      
+      
+
+      <section class="article-entry">
+        <h1 id="BITS-BYTES-amp-amp-INTEGERS"><a href="#BITS-BYTES-amp-amp-INTEGERS" class="headerlink" title="BITS, BYTES &amp;&amp; INTEGERS"></a>BITS, BYTES &amp;&amp; INTEGERS</h1><ul>
+<li><p>0406</p>
+</li>
+<li><p>binary:</p>
+<p>  int, float（二进制浮点数，eg:小数点后每位是2^(-1), 2^(-2)…</p>
+</li>
+<li><p>boolean algebra</p>
+<p>  &amp; | ~ ^</p>
+<ul>
+<li><p>布尔代数与集合（manipulating sets）的关系：</p>
+<p>  “&amp;” intersection（交集）</p>
+<p>  “|”  union（并集）</p>
+<p>  “^” symmetric difference （对称差异）</p>
+<p>  “~” complement（补集）</p>
+</li>
+<li><p>布尔代数与逻辑运算（logic operations）的区别：</p>
+<p>  &amp;&amp; || ！：false是0，true是1（是真假判断而不是位操作）</p>
+</li>
+</ul>
+</li>
+<li><p>shift operations（位移）</p>
+<p>  left shift：x &lt;&lt; y （舍去高位）</p>
+<ul>
+<li><p>right shift：x &gt;&gt; y</p>
+<p>  log. [logical shift]：逻辑移位（高位补零）</p>
+<p>  arith. [arithmetic shift]：算术移位（高位补符号位）</p>
+</li>
+<li><p><strong>如果移位超过≥位数怎么办</strong>：</p>
+</li>
+</ul>
+<p>  大多数机器的处理方法：k ≥ w时，则规定只移动移位的后log2(w)位（移位要先变成二进制，取最后log2(w)位），又因为是二进制，故移位变为k mod 2 ^ ( log2 (w) ) 位，即变为k mod w 位</p>
+</li>
+<li><p>encoding integers</p>
+<p>  unsigned</p>
+<p>  signed：最高位是负数权重，1是负的2^k，0是非负 0*2^k 即为0</p>
+<ul>
+<li><p>numeric ranges 数值的范围</p>
+<ul>
+<li>unsigned values：</li>
+</ul>
+<p>  UMin = 0, UMax = 2^w -1</p>
+<ul>
+<li>two’s complement values（二进制补码）：</li>
+</ul>
+<p>  TMin = -2^(w-1), TMax = 2^(w-1)-1</p>
+<p>  补码中的111……1 = -1（10进制）</p>
+</li>
+</ul>
+<p>  signed和unsigned转化</p>
+<p>  T2U / U2T</p>
+<p>  <img src="BITS,%20BYTES%20&&%20INTEGERS%20bf9e089caff0417e93b5b30759eb53d4/Untitled.png" alt="BITS,%20BYTES%20&amp;&amp;%20INTEGERS%20bf9e089caff0417e93b5b30759eb53d4/Untitled.png"></p>
+</li>
+<li><p>0408</p>
+</li>
+<li><p>signed &amp;&amp; unsigned之间的比较和运算</p>
+<ul>
+<li>一个 signed 和 unsigned 比较/运算：将signed转换为unsigned（只要有无符号的就都按无符号的处理）eg. sizeof()是无符号表达式，不是内置函数，返回无符号值</li>
+</ul>
+<p>  |Tmax| = |Tmin| - 1</p>
+<p>  Tmin = -Tmax - 1</p>
+<ul>
+<li>求一个有符号数的负数：按位取反+1 （-x = ~x + 1）</li>
+</ul>
+<p>  （原理：取反加一之后和原数相加得10..00）</p>
+<p>  Tmin = -Tmin</p>
+<p>  Tmin = ~Tmin + 1</p>
+</li>
+<li><p>sign extension</p>
+<ul>
+<li><p>符号位拓展</p>
+</li>
+<li><p>expanding</p>
+<p>  详细推导</p>
+<p>  <img src="BITS,%20BYTES%20&&%20INTEGERS%20bf9e089caff0417e93b5b30759eb53d4/Untitled%201.png" alt="BITS,%20BYTES%20&amp;&amp;%20INTEGERS%20bf9e089caff0417e93b5b30759eb53d4/Untitled%201.png"></p>
+</li>
+<li><p>应用例子：在16进制中看见fff..ff0323..23之类的数，说明肯定是负数，而且不是很大的负数</p>
+</li>
+<li><p>truncating</p>
+<p>  截断</p>
+<p>  unsigned：mod operation：w位数截断最高位：mod 2^w</p>
+<p>  signed：similar to mod（可能负变正，正变负）</p>
+</li>
+</ul>
+</li>
+<li><p>TAdd Overflow</p>
+<p>  positive overflow：PosOver 正溢出</p>
+<p>  NegOver 负溢出：negative overflow</p>
+</li>
+<li><p>unsigned multiplication in c</p>
+<p>  implements modular arithmetic（取模运算）</p>
+</li>
+<li><p>unsigned power-of-2 divide with shift</p>
+<p>   add bias ⇒  do a right shift （instead of calling division）</p>
+</li>
+<li><p>compliment &amp;&amp; increment ：取反加一（获得补码）</p>
+</li>
+<li><p>Byte-Oriented Memory Organization</p>
+<p>  segmentation fault</p>
+<ul>
+<li><p>word size（字长）</p>
+</li>
+<li><p>byte ordering</p>
+<p>  big endian（大端序）：高字节存低地址，vice versa</p>
+<p>  little endian（小端序）：高字节存高地址，vice versa</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      </section>
+
+      <section class="article-footer">
         
+      </section>
+
+      <section class="article-navs">
+        
+<nav class="card-container card-article-nav">
+  <div class="card-list">
+    
+    
+      <div id="article-nav-older" class="card-item">
+        <article>
           
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/21/1037-Whisper-%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/" itemprop="url"></a>
-              
-              <h2 class="article-title">1037-Whisper 实习日志</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/21/1037-Whisper-%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/" class="article-date">
-    <time datetime="2021-03-20T16:57:17.000Z" itemprop="datePublished">2021-03-21</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/17/%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" itemprop="url"></a>
-              
-              <h2 class="article-title">搭建简易后端服务的笔记w</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/17/%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" class="article-date">
-    <time datetime="2021-03-17T03:46:55.000Z" itemprop="datePublished">2021-03-17</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E5%A4%A7%E5%88%9B/" itemprop="url"></a>
-              
-              <h2 class="article-title">大创笔记</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E5%A4%A7%E5%88%9B/" class="article-date">
-    <time datetime="2021-03-15T08:24:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/start-up/">start-up</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E7%82%B9%E7%9F%B3%E5%88%9B%E6%A0%A1/" itemprop="url"></a>
-              
-              <h2 class="article-title">点石创校笔记</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E7%82%B9%E7%9F%B3%E5%88%9B%E6%A0%A1/" class="article-date">
-    <time datetime="2021-03-15T08:20:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/start-up/">start-up</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E4%B8%80%E4%BA%9B%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0ww%20/" itemprop="url"></a>
-              
-              <h2 class="article-title">一些爬虫笔记ww</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E4%B8%80%E4%BA%9B%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0ww%20/" class="article-date">
-    <time datetime="2021-03-15T07:31:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/15/%E4%B9%9F%E8%AE%B8%E6%98%AF%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0ww/" itemprop="url"></a>
-              
-              <h2 class="article-title">也许是萌新的后端学习笔记（x</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/15/%E4%B9%9F%E8%AE%B8%E6%98%AF%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0ww/" class="article-date">
-    <time datetime="2021-03-15T01:48:55.000Z" itemprop="datePublished">2021-03-15</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                <a class="article-category-link" href="/categories/coding/">coding</a>
-              </div>
-            </article>
-          </div>
-        
-          
-          <div class="card-item">
-            <article>
-              
-              
-                <a class="article-link card-link" href="/2021/03/13/hello-world/" itemprop="url"></a>
-              
-              <h2 class="article-title">Hello World</h2>
-              <div class="article-meta">
-                <strong>hibana</strong>
-                <span>发布于</span>
-                
-  <a href="/2021/03/13/hello-world/" class="article-date">
-    <time datetime="2021-03-13T14:16:34.777Z" itemprop="datePublished">2021-03-13</time>
-  </a>
-
-              </div>
-              <div class="article-category">
-                
-              </div>
-            </article>
-          </div>
-        
+          <a class="card-link article-nav-link" href="/2021/03/21/1037-Whisper-%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/"></a>
+          <strong class="article-nav-caption">Older</strong>
+          <p class="article-nav-title">
+            
+              1037-Whisper 实习日志
+            
+          </p>
+        </article>
       </div>
-    </div>
+    
   </div>
+</nav>
+
+      </section>
+    </div>
+  </article>
 </div>
-
-<!-- page container -->
-
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">
@@ -343,6 +329,23 @@
 
   
   
+<!-- valine 评论 start -->
+<script type="text/javascript" src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+  new Valine({
+    el: "#valine_thread",
+    appId: "hibana",
+    appKey: "Hibana_114514",
+    avatar: "mm",
+    placeholder: "随便说点什么叭～",
+    notify: true,
+    visitor: true,
+    pageSize: 10,
+  });
+</script>
+<!-- valine 评论 end -->
+
 
 
   <!-- aplayer 音频 start -->
