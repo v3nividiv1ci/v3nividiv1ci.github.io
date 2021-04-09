@@ -159,6 +159,51 @@
 </ul>
 </li>
 </ul>
+<p>0409</p>
+<ul>
+<li><p>文本处理命令</p>
+<ul>
+<li><p>less：随意浏览文件，支持翻页和搜索等</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ps查看进程信息并通过less分页显示</span><br>ps -ef |less<br><span class="hljs-comment"># 查看命令历史使用记录并通过less分页显示</span><br><span class="hljs-built_in">history</span> | less<br></code></pre></td></tr></table></figure>
+
+<p>  1.全屏导航</p>
+  <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">ctrl</span> + F - 向前移动一屏<br><span class="hljs-symbol">ctrl</span> + <span class="hljs-keyword">B</span> - 向后移动一屏<br><span class="hljs-symbol">ctrl</span> + D - 向前移动半屏<br><span class="hljs-symbol">ctrl</span> + U - 向后移动半屏<br></code></pre></td></tr></table></figure>
+
+<p>  2.单行导航</p>
+  <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">j </span>- 向前移动一行<br>k - 向后移动一行<br></code></pre></td></tr></table></figure>
+
+<p>  3.其它导航</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake">G - 移动到最后一行<br>g - 移动到第一行<br>q / ZZ - 退出 <span class="hljs-keyword">less</span> 命令<br></code></pre></td></tr></table></figure>
+
+<p>  4.其它有用的命令</p>
+  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c">v - 使用配置的编辑器编辑当前文件<br>h - 显示 less 的帮助文档<br><span class="hljs-meta">&amp;pattern - 仅显示匹配模式的行，而不是整个文件</span><br></code></pre></td></tr></table></figure></li>
+<li><p>more：跟cat less类似</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">more [-dlfpcsu] [-num] [+/pattern] [+linenum] [fileNames..]<br>从第 20 行开始显示 testfile 之文档内容。<br>more +20 testfile<br></code></pre></td></tr></table></figure></li>
+<li><p>tail</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">tail [-fqvcn] [filename]<br><span class="hljs-comment"># eg.要显示 notes.log 文件的最后 10 行</span><br>tail notes.log<br><span class="hljs-comment"># 显示文件 notes.log 的内容，从第 20 行至文件末尾:</span><br>tail -n +20 notes.log<br></code></pre></td></tr></table></figure></li>
+<li><p>cat</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">cat [-AbeEnstTuv] [--<span class="hljs-built_in">help</span>] [--version] fileName<br><br><span class="hljs-comment"># **把 textfile1 的文档内容加上行号后输入 textfile2 这个文档里：</span><br>cat -n textfile1 &gt; textfile2<br><span class="hljs-comment"># 把 textfile1 和 textfile2 的文档内容加上行号（空白行不加）之后将内容附加到 textfile3 文档里：</span><br>cat -b textfile1 textfile2 &gt;&gt; textfile3<br><span class="hljs-comment"># 清空 /etc/test.txt 文档内容：</span><br>cat /dev/null &gt; /etc/test.txt**<br></code></pre></td></tr></table></figure></li>
+<li><p>grep</p>
+<p>  用于查找文件里符合条件的字符串</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep [-abcEFGhHilLnqrsvVwxy][-A&lt;显示行数&gt;][-B&lt;显示列数&gt;][-C&lt;显示列数&gt;][-d&lt;进行动作&gt;][-e&lt;范本样式&gt;][-f&lt;范本文件&gt;][--<span class="hljs-built_in">help</span>][范本样式][文件或目录...]<br><br><span class="hljs-comment"># 在当前目录中，查找后缀有 file 字样的文件中包含 test 字符串的文件，并打印出该字符串的行。此时，可以使用如下命令：</span><br>grep <span class="hljs-built_in">test</span> *file<br></code></pre></td></tr></table></figure></li>
+<li><p>awk</p>
+<p>  一种处理文本文件的语言，是一个强大的文本分析工具</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk [选项参数] <span class="hljs-string">&#x27;script&#x27;</span> var=value file(s)<br>或<br>awk [选项参数] -f scriptfile var=value file(s)<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>pipe与重定向的区别</p>
+<ol>
+<li>左边的命令应该有标准输出 | 右边的命令应该接受标准输入   左边的命令应该有标准输出 &gt; 右边只能是文件   左边的命令应该需要标准输入 &lt; 右边只能是文</li>
+<li><strong>管道</strong>触发两个子进程执行”|”两边的程序；而<strong>重定向</strong>是在一个进程内执行</li>
+</ol>
+</li>
+<li><p>shell脚本</p>
+</li>
+<li><p>makefile</p>
+</li>
+<li><p>发行版的包管理器的使用</p>
+</li>
+</ul>
 
       </section>
 
