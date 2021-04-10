@@ -101,7 +101,7 @@
           <span>发布于</span>
           
   <a href="javascript:;" class="article-date">
-    <time datetime="2021-04-08T15:08:20.000Z" itemprop="datePublished">2021-04-08</time>
+    <time datetime="2021-04-10T15:54:20.000Z" itemprop="datePublished">2021-04-10</time>
   </a>
 
         </h2>
@@ -158,9 +158,8 @@
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ netstat -ntlp   //查看当前所有tcp端口<br>$ netstat -ntulp | grep 80   //查看所有80端口使用情况<br>$ netstat -ntulp | grep 3306   //查看所有3306端口使用情况<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ul>
-<p>0409</p>
-<ul>
+<li><p>0409</p>
+</li>
 <li><p>文本处理命令</p>
 <ul>
 <li><p>less：随意浏览文件，支持翻页和搜索等</p>
@@ -198,10 +197,48 @@
 </ol>
 </li>
 <li><p>shell脚本</p>
-</li>
+<ul>
+<li><p>查看当前系统中的shell类型</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+  <img src="/2021/04/10/LINUX%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png" class="" title="这是一张图片"></li>
 <li><p>makefile</p>
+<ul>
+<li><p>make背后隐藏了什么</p>
+<p>  <strong>预编译processing .i</strong></p>
+<p>  主要处理以#开头的预处理指令，#include #define等；</p>
+<p>  经过预编译的.i文件，不包含任何宏定义，并且所包含的文件也被插入进来</p>
+<p>  <strong>编译complication .s</strong></p>
+<p>  编译过程就是将预编译产生的.i文件经过一系列的词法分析，语法分析，语意分析，优化后产生汇编代码文件</p>
+<p>  <strong>汇编assembly .o</strong></p>
+<p>  汇编器将汇编代码转换成成机器指令，每一条汇编语句对应一条或几条机器指令，根据汇编指令和机器指令一一翻译的过程</p>
+<p>  <strong>链接linking</strong></p>
+<p>  将库文件与目标文件链接成可执行文件的过程</p>
+</li>
+<li><p>cmake的使用</p>
+<p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/zhuiyunzhugang/article/details/88142908">https://blog.csdn.net/zhuiyunzhugang/article/details/88142908</a></p>
+<p>  创建目录⇒main.cc + CMakeLists.txt⇒cmake . ⇒ make ⇒./name <input></p>
+</li>
+</ul>
 </li>
 <li><p>发行版的包管理器的使用</p>
+<p>  <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/265309587">https://zhuanlan.zhihu.com/p/265309587</a></p>
+  <img src="/2021/04/10/LINUX%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.png" class="" title="这是一张图片">
+
+<p>  ubuntu：apt等</p>
+<p>  CentOS：yum等</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.notion.so/DOCKER-723cb67be67844b89e89c91463104006">DOCKER</a></p>
+<ul>
+<li><p>vim文本编辑器</p>
+<p>  <a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-vim.html">https://www.runoob.com/linux/linux-vim.html</a></p>
+  <img src="/2021/04/10/LINUX%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.png" class="" title="这是一张图片">
+
+<ul>
+<li><p>常见指令：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 搜索</span><br>/word <span class="hljs-comment"># 向下搜索</span><br>?word <span class="hljs-comment"># 向上搜索</span><br><span class="hljs-comment"># 替换</span><br>:n1,n2s/word1/word2/g<br>:1, <span class="hljs-variable">$s</span>/word1/word2/g<br><span class="hljs-comment"># 左下上右移动光标</span><br>hjkl<br><span class="hljs-comment"># 光标移动</span><br>n&lt;enter&gt; <span class="hljs-comment"># 光标向下移动n行</span><br><span class="hljs-comment"># 翻页</span><br>ctrl+f <span class="hljs-comment"># 向下移动一页</span><br>ctrl+b <span class="hljs-comment"># 向上移动一页</span><br><span class="hljs-comment"># 进入块选择visual-block模式</span><br>ctrl+v<br><span class="hljs-comment"># 批量为行添加注释</span><br>:10,20s<span class="hljs-comment">#^#//#g</span><br><span class="hljs-comment"># 批量删除注释</span><br>:10,20s<span class="hljs-comment">#^//##g</span><br></code></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ul>
 
